@@ -2,8 +2,10 @@ import re, os, sys, subprocess, copy, traceback, logging
 
 try:
     from HTMLParser import HTMLParser
+    htmlParser = HTMLParser()
 except ImportError:
-    from html.parser import HTMLParser
+    # from html.parser import HTMLParser
+    import html as htmlParser
 try:
     from urllib import quote as _quote
     quote = lambda n: _quote(n.encode('utf8', 'replace'))
@@ -17,7 +19,7 @@ from . import config
 logger = logging.getLogger('itchat')
 
 emojiRegex = re.compile(r'<span class="emoji emoji(.{1,10})"></span>')
-htmlParser = HTMLParser()
+
 try:
     b = u'\u2588'
     sys.stdout.write(b + '\r')

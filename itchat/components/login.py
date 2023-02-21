@@ -60,7 +60,8 @@ def login(self, enableCmdQR=False, picDir=None, qrCallback=None,
                     logger.info('Please press confirm on your phone.')
                     isLoggedIn = None
             elif status != '408':
-                break
+                logger.warning('Response status is {status}'.format(status=status))
+                time.sleep(5)
         if isLoggedIn:
             break
         elif self.isLogging:
